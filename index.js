@@ -1,6 +1,18 @@
-const app = require("./app");
 const connectDatabase = require("./config/database");
 const dotenv = require("dotenv");
+const express = require("express");
+const app = express();
+const cookieParser = require("cookie-parser");
+
+//config
+dotenv.config({ path: "config/config.env" });
+
+app.use(express.json());
+app.use(cookieParser());
+
+//Routs Import
+const user = require("./routes/userRoute");
+app.use("/api/v1", user);
 
 //Handling Uncaught Exceptions
 process.on("uncaughtException", (err) => {
@@ -10,7 +22,6 @@ process.on("uncaughtException", (err) => {
 });
 //config
 dotenv.config({ path: "config/config.env" });
-
 
 //connecting to DataBase
 connectDatabase();
@@ -26,3 +37,5 @@ process.on("unhandledRejection", (err) => {
   server.close();
   process.exit(1);
 });
+
+module.exports = app;
