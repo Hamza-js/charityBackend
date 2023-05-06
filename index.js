@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
 });
 
 //Routs Import
-const user = require("./routes/userRoute");
-app.use("/api/v1", user);
+// const user = require("./routes/userRoute");
+// app.use("/api/v1", user);
 
 //Handling Uncaught Exceptions
 process.on("uncaughtException", (err) => {
