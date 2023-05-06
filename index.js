@@ -10,13 +10,9 @@ dotenv.config({ path: "config/config.env" });
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("Express on Vercel");
-});
-
 //Routs Import
-// const user = require("./routes/userRoute");
-// app.use("/api/v1", user);
+const user = require("./routes/userRoute");
+app.use("/api/v1", user);
 
 //Handling Uncaught Exceptions
 process.on("uncaughtException", (err) => {
