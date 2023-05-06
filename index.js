@@ -6,12 +6,13 @@ const cookieParser = require("cookie-parser");
 const catchAcyncError = require("./middleware/catchAcyncError");
 const nodemailer = require("nodemailer");
 const Donation = require("./models/donationModel");
-
+const cors = require("cors");
 //config
 dotenv.config({ path: "config/config.env" });
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 //Routs Import
 // const user = require("./routes/userRoute");
