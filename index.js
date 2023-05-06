@@ -13,6 +13,9 @@ app.use(cookieParser());
 //Routs Import
 const user = require("./routes/userRoute");
 app.use("/api/v1", user);
+// app.get("/", (req, res) => {
+//   res.send("Express on Vercel");
+// });
 
 //Handling Uncaught Exceptions
 process.on("uncaughtException", (err) => {
